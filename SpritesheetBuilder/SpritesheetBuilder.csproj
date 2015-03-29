@@ -100,6 +100,10 @@
       <Project>{ae9e2a39-88a3-4190-b97b-70505377e19f}</Project>
       <Name>SpritesheetBuilderBackend</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestProject\TestProject.csproj">
+      <Project>{ca0828ca-e96a-44a5-ad27-122aa5511500}</Project>
+      <Name>TestProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

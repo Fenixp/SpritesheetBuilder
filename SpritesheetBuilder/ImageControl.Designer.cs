@@ -56,6 +56,7 @@
             this.pbImage.Location = new System.Drawing.Point(3, 3);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(94, 64);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
             // 
@@ -66,6 +67,8 @@
             this.tbImageName.Name = "tbImageName";
             this.tbImageName.Size = new System.Drawing.Size(94, 20);
             this.tbImageName.TabIndex = 1;
+            this.tbImageName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbImageName_KeyPress);
+            this.tbImageName.Leave += new System.EventHandler(this.tbImageName_Leave);
             // 
             // ImageControl
             // 
@@ -86,7 +89,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpImageControls;
         private System.Windows.Forms.PictureBox pbImage;
-        private System.Windows.Forms.TextBox tbImageName;
+        public System.Windows.Forms.TextBox tbImageName;
 
     }
 }

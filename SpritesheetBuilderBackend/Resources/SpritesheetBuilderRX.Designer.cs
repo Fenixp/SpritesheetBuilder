@@ -61,6 +61,24 @@ namespace SpritesheetBuilderBackend.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The image name {0} already exists..
+        /// </summary>
+        public static string DuplicateImageName {
+            get {
+                return ResourceManager.GetString("DuplicateImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate image name.
+        /// </summary>
+        public static string DuplicateImageNameTitle {
+            get {
+                return ResourceManager.GetString("DuplicateImageNameTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Errors.
         /// </summary>
         public static string Errors {
@@ -93,6 +111,15 @@ namespace SpritesheetBuilderBackend.Resources {
         public static string ReadingOK {
             get {
                 return ResourceManager.GetString("ReadingOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Renaming..
+        /// </summary>
+        public static string Renaming {
+            get {
+                return ResourceManager.GetString("Renaming", resourceCulture);
             }
         }
         

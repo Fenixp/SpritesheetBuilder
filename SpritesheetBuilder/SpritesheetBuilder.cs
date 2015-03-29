@@ -1,5 +1,4 @@
 ﻿using SpritesheetBuilderBackend.Controllers;
-using SpritesheetBuilderBackend.Entities;
 using SpritesheetBuilderBackend.Resources;
 using SpritesheetBuilderBackend.Results;
 using System;
@@ -12,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestProject.TestForms;
 
 namespace SpritesheetBuilder
 {
@@ -47,20 +47,44 @@ namespace SpritesheetBuilder
         {
             ImageFilesReadResult result = (ImageFilesReadResult)e.Result;
 
-            if (!result.HasErrors && !result.HasWarnings)
+            if (!result.HasErrors)
             {
-                MessageBox.Show(SpritesheetBuilderRX.ReadingOK, SpritesheetBuilderRX.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 processImages();
+            }
+            
+            if(result.HasErrors || result.HasWarnings)
+            {
+                ErrorList errors = new ErrorList();
+                errors.Result = result;
+                errors.ShowDialog();
             }
         }
 
         private void processImages()
         {
-            foreach (EImage image in _controller.Images)
+            flpContent.Controls.Clear();
+            foreach (KeyValuePair<string, Image> image in _controller.Images)
             {
-                ImageControl icontrol = new ImageControl();
-                icontrol.Image = image;
+                ImageControl icontrol = new ImageControl(_controller);
+                icontrol.Image = image.Value;
+                icontrol.tbImageName.Text = image.Key;
                 flpContent.Controls.Add(icontrol);
+            }
+        }
+
+        private void bttPickFolder_Click(object sender, EventArgs e)
+        {
+            if (fbdFolderToSave.ShowDialog() == DialogResult.OK && fbdFolderToSave.SelectedPath != String.Empty)
+            {
+                tbFolderPath.Text = fbdFolderToSave.SelectedPath;
+            }
+        }
+
+        private void bttSave_Click(object sender, EventArgs e)
+        {
+            if (_controller.CheckFileNameValidity(tbFolderPath.Text, tbFileName.Text))
+            {
+                _controller.SaveSpriteSheet(tbFileName.Text, tbFolderPath.Text);
             }
         }
     }

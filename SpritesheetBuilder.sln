@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpritesheetBuilder", "Sprit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpritesheetBuilderBackend", "SpritesheetBuilderBackend\SpritesheetBuilderBackend.csproj", "{AE9E2A39-88A3-4190-B97B-70505377E19F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{CA0828CA-E96A-44A5-AD27-122AA5511500}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AE9E2A39-88A3-4190-B97B-70505377E19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE9E2A39-88A3-4190-B97B-70505377E19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE9E2A39-88A3-4190-B97B-70505377E19F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA0828CA-E96A-44A5-AD27-122AA5511500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA0828CA-E96A-44A5-AD27-122AA5511500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA0828CA-E96A-44A5-AD27-122AA5511500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA0828CA-E96A-44A5-AD27-122AA5511500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
