@@ -8,10 +8,13 @@ using System.Drawing;
 using System.IO;
 using SpritesheetBuilderBackend.Resources;
 using System.Drawing.Imaging;
+using SpritesheetReader;
+using SpritesheetReader.DataStructures;
+using GUIBackend.Controllers;
 
 namespace SpritesheetBuilderBackend.Controllers
 {
-    public class SpritesheetBuilderController
+    public class SpritesheetBuilderController : ControllerBase
     {
         private Dictionary<string, Image> _images = new Dictionary<string, Image>();
 
@@ -87,7 +90,7 @@ namespace SpritesheetBuilderBackend.Controllers
                 {
                     g.DrawImage(image.Value, x, y, image.Value.Width, image.Value.Height);
                     outText.AppendLine(String.Format("{0} {1} {2} {3} {4}", 
-                        x, 0, image.Value.Width, image.Value.Height, image.Key));
+                        x, y, image.Value.Width, image.Value.Height, image.Key));
 
                     x += image.Value.Width;
                     height = image.Value.Height > height ? image.Value.Height : height;
@@ -107,7 +110,56 @@ namespace SpritesheetBuilderBackend.Controllers
 
         public bool CheckFileNameValidity(string filePath, string fileName)
         {
-            return filePath != String.Empty && fileName != String.Empty;
+            if (filePath == String.Empty || fileName == String.Empty)
+            {
+                return false;
+            }
+
+            if (File.Exists(String.Format("{0}\\{1}.png", filePath, fileName)))
+            {
+                return ShowPrompt(SpritesheetBuilderRX.FileAlreadyExists);
+            }
+
+            return true;
+        }
+
+        public ImageFilesReadResult ReadSpritesheetFile(string folderPath, string spritesheetName)
+        {
+            ImageFilesReadResult result = new ImageFilesReadResult();
+            ContentSettings.ContentRootDirectory = folderPath;
+            Dictionary<string, SpriteInfo> spritesheet = SpritesheetReader.SpritesheetReader.GetSprites(spritesheetName);
+            string warningMessage;
+
+            foreach (KeyValuePair<string, SpriteInfo> image in spritesheet)
+            { 
+                warningMessage = String.Empty;
+                AddNewImage(image.Key, CutOutImage(image.Value), out warningMessage);
+
+                if (warningMessage != String.Empty)
+                {
+                    result.AddWarning(warningMessage);
+                }
+            }
+
+            return result;
+        }
+
+        private Image CutOutImage(SpriteInfo image)
+        {
+            Bitmap retImage = new Bitmap(image.Rectangle.Width, image.Rectangle.Height);
+
+            using (Graphics g = Graphics.FromImage(retImage))
+            {
+                Rectangle destRect = new Rectangle 
+                { 
+                    X = 0, Y = 0, Width = image.Rectangle.Width, Height = image.Rectangle.Height 
+                };
+                Rectangle srcRect = image.Rectangle;
+
+                g.DrawImage(image.Image, destRect, srcRect, GraphicsUnit.Pixel);
+            }
+
+            return retImage;
         }
 
         private int GetLineLength()

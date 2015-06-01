@@ -32,16 +32,18 @@
             this.flpTitle = new System.Windows.Forms.FlowLayoutPanel();
             this.bttAddImage = new System.Windows.Forms.Button();
             this.bttDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttOpenSpritesheet = new System.Windows.Forms.Button();
             this.bttSave = new System.Windows.Forms.Button();
             this.flpContent = new System.Windows.Forms.FlowLayoutPanel();
-            this.ofdImageDialog = new System.Windows.Forms.OpenFileDialog();
-            this.bwLoadFiles = new System.ComponentModel.BackgroundWorker();
             this.flpSavePath = new System.Windows.Forms.FlowLayoutPanel();
             this.tbFolderPath = new System.Windows.Forms.TextBox();
             this.tbFileName = new System.Windows.Forms.TextBox();
             this.bttPickFolder = new System.Windows.Forms.Button();
+            this.ofdImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.bwLoadFiles = new System.ComponentModel.BackgroundWorker();
             this.fbdFolderToSave = new System.Windows.Forms.FolderBrowserDialog();
+            this.ofdOpenSpritesheet = new System.Windows.Forms.OpenFileDialog();
+            this.bwLoadSpritesheet = new System.ComponentModel.BackgroundWorker();
             this.tlpMain.SuspendLayout();
             this.flpTitle.SuspendLayout();
             this.flpSavePath.SuspendLayout();
@@ -68,7 +70,7 @@
             // 
             this.flpTitle.Controls.Add(this.bttAddImage);
             this.flpTitle.Controls.Add(this.bttDelete);
-            this.flpTitle.Controls.Add(this.button1);
+            this.flpTitle.Controls.Add(this.bttOpenSpritesheet);
             this.flpTitle.Controls.Add(this.bttSave);
             this.flpTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpTitle.Location = new System.Drawing.Point(3, 3);
@@ -95,14 +97,15 @@
             this.bttDelete.Text = "Delete selected";
             this.bttDelete.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // bttOpenSpritesheet
             // 
-            this.button1.Location = new System.Drawing.Point(202, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 30);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Open spritesheet";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bttOpenSpritesheet.Location = new System.Drawing.Point(202, 3);
+            this.bttOpenSpritesheet.Name = "bttOpenSpritesheet";
+            this.bttOpenSpritesheet.Size = new System.Drawing.Size(104, 30);
+            this.bttOpenSpritesheet.TabIndex = 3;
+            this.bttOpenSpritesheet.Text = "Open spritesheet";
+            this.bttOpenSpritesheet.UseVisualStyleBackColor = true;
+            this.bttOpenSpritesheet.Click += new System.EventHandler(this.bttOpenSpritesheet_Click);
             // 
             // bttSave
             // 
@@ -122,15 +125,6 @@
             this.flpContent.Name = "flpContent";
             this.flpContent.Size = new System.Drawing.Size(725, 474);
             this.flpContent.TabIndex = 1;
-            // 
-            // ofdImageDialog
-            // 
-            this.ofdImageDialog.Multiselect = true;
-            // 
-            // bwLoadFiles
-            // 
-            this.bwLoadFiles.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwLoadFiles_DoWork);
-            this.bwLoadFiles.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwLoadFiles_RunWorkerCompleted);
             // 
             // flpSavePath
             // 
@@ -169,6 +163,24 @@
             this.bttPickFolder.UseVisualStyleBackColor = true;
             this.bttPickFolder.Click += new System.EventHandler(this.bttPickFolder_Click);
             // 
+            // ofdImageDialog
+            // 
+            this.ofdImageDialog.Multiselect = true;
+            // 
+            // bwLoadFiles
+            // 
+            this.bwLoadFiles.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwLoadFiles_DoWork);
+            this.bwLoadFiles.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwLoadFiles_RunWorkerCompleted);
+            // 
+            // ofdOpenSpritesheet
+            // 
+            this.ofdOpenSpritesheet.Filter = "Spritesheet Files | *.txt";
+            // 
+            // bwLoadSpritesheet
+            // 
+            this.bwLoadSpritesheet.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwLoadSpritesheet_DoWork);
+            this.bwLoadSpritesheet.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwLoadFiles_RunWorkerCompleted);
+            // 
             // SpritesheetBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,13 +208,15 @@
         private System.Windows.Forms.Button bttAddImage;
         private System.Windows.Forms.Button bttDelete;
         private System.Windows.Forms.Button bttSave;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttOpenSpritesheet;
         private System.ComponentModel.BackgroundWorker bwLoadFiles;
         private System.Windows.Forms.FlowLayoutPanel flpSavePath;
         private System.Windows.Forms.TextBox tbFolderPath;
         private System.Windows.Forms.TextBox tbFileName;
         private System.Windows.Forms.Button bttPickFolder;
         private System.Windows.Forms.FolderBrowserDialog fbdFolderToSave;
+        private System.Windows.Forms.OpenFileDialog ofdOpenSpritesheet;
+        private System.ComponentModel.BackgroundWorker bwLoadSpritesheet;
     }
 }
 

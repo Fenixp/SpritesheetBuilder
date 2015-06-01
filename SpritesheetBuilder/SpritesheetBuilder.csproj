@@ -96,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GUIBackend\GUIBackend.csproj">
+      <Project>{0d281e7b-a446-4b24-99f5-78d1c79b36b9}</Project>
+      <Name>GUIBackend</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpritesheetBuilderBackend\SpritesheetBuilderBackend.csproj">
       <Project>{ae9e2a39-88a3-4190-b97b-70505377e19f}</Project>
       <Name>SpritesheetBuilderBackend</Name>

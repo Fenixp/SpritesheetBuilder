@@ -88,6 +88,15 @@ namespace SpritesheetBuilderBackend.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The selected file already exists. Do you with to rewrite it?.
+        /// </summary>
+        public static string FileAlreadyExists {
+            get {
+                return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file {0} was not found.
         /// </summary>
         public static string FileNotFound {

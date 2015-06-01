@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +87,32 @@ namespace SpritesheetBuilder
             {
                 _controller.SaveSpriteSheet(tbFileName.Text, tbFolderPath.Text);
             }
+        }
+
+        private void bwLoadSpritesheet_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = _controller.ReadSpritesheetFile(tbFolderPath.Text, tbFileName.Text);
+        }
+
+        private void bttOpenSpritesheet_Click(object sender, EventArgs e)
+        {
+            if (ofdOpenSpritesheet.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                tbFolderPath.Text = fbdFolderToSave.SelectedPath = Path.GetDirectoryName(ofdOpenSpritesheet.FileName);
+                tbFileName.Text = Path.GetFileNameWithoutExtension(ofdOpenSpritesheet.FileName);
+
+                bwLoadSpritesheet.RunWorkerAsync();
+            }
+        }
+
+        private void toggleControls(bool enabled)
+        {
+            bttAddImage.Enabled = enabled;
+            bttDelete.Enabled = enabled;
+            bttOpenSpritesheet.Enabled = enabled;
+            bttPickFolder.Enabled = enabled;
+            bttSave.Enabled = enabled;
+            tbFileName.Enabled = enabled;
         }
     }
 }
