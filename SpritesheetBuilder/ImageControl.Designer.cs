@@ -59,6 +59,7 @@
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
+            this.pbImage.Click += new System.EventHandler(this.pbImage_Click);
             // 
             // tbImageName
             // 

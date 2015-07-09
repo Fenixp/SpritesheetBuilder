@@ -106,6 +106,7 @@ namespace SpritesheetBuilderBackend.Controllers
 
             File.WriteAllText(String.Format("{0}\\{1}.txt", saveFolderPath, spritesheetName), outText.ToString());
             spriteSheet.Save(String.Format("{0}\\{1}.png", saveFolderPath, spritesheetName), ImageFormat.Png);
+            ShowInfo(SpritesheetBuilderRX.SaveSuccesfull);
         }
 
         public bool CheckFileNameValidity(string filePath, string fileName)

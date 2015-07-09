@@ -18,7 +18,9 @@ namespace SpritesheetBuilder
 
         public Image Image { get; set; }
 
-        private string _name;
+        public bool Selected { get; set; }
+
+        public string SpriteName { get; set; }
 
         private static SpritesheetBuilderController _controller;
 
@@ -26,17 +28,18 @@ namespace SpritesheetBuilder
         {
             InitializeComponent();
             _controller = controller;
+            Selected = false;
         }
 
         private void ImageControl_Load(object sender, EventArgs e)
         {
             pbImage.Image = Image;
-            _name = tbImageName.Text;
+            SpriteName = tbImageName.Text;
         }
 
         private void tbImageName_Leave(object sender, EventArgs e)
         {
-            if (_name != tbImageName.Text)
+            if (SpriteName != tbImageName.Text)
             {
                 changeImageName();
             }
@@ -44,7 +47,7 @@ namespace SpritesheetBuilder
 
         private void tbImageName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (_name != tbImageName.Text && e.KeyChar == ENTER_KEY_CODE)
+            if (SpriteName != tbImageName.Text && e.KeyChar == ENTER_KEY_CODE)
             {
                 changeImageName();
             }
@@ -54,13 +57,26 @@ namespace SpritesheetBuilder
         {
             try
             {
-                _controller.RenameImage(_name, tbImageName.Text);
-                _name = tbImageName.Text;
+                _controller.RenameImage(SpriteName, tbImageName.Text);
+                SpriteName = tbImageName.Text;
             }
             catch
             {
                 MessageBox.Show(String.Format(SpritesheetBuilderRX.DuplicateImageName, tbImageName.Text), SpritesheetBuilderRX.DuplicateImageNameTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbImageName.Text = _name;
+                tbImageName.Text = SpriteName;
+            }
+        }
+
+        private void pbImage_Click(object sender, EventArgs e)
+        {
+            Selected = !Selected;
+            if (Selected)
+            {
+                this.BackColor = SystemColors.Highlight; //System.Drawing.Color.Blue;
+            }
+            else
+            {
+                this.BackColor = SystemColors.Control;
             }
         }
     }

@@ -114,5 +114,35 @@ namespace SpritesheetBuilder
             bttSave.Enabled = enabled;
             tbFileName.Enabled = enabled;
         }
+
+        private void bttDelete_Click(object sender, EventArgs e)
+        {
+            //if(_controller)
+            List<ImageControl> ImageControlsToRemove = new List<ImageControl> () ;
+            foreach( ImageControl x in flpContent.Controls)
+            {
+                if (x.Selected) 
+                {
+                    ImageControlsToRemove.Add(x);
+                }
+            }
+            foreach (ImageControl x in ImageControlsToRemove)
+            {
+                flpContent.Controls.Remove(x);
+                _controller.Images.Remove(x.SpriteName);
+            }
+
+
+            /*
+            for (int i = 0; i < flpContent.Controls.Count; i++) 
+            {
+                if (((ImageControl)flpContent.Controls[i]).Selected)
+                {
+                    flpContent.Controls.Remove(flpContent.Controls[i]);
+                    i--;
+                }
+            }
+             */
+        }
     }
 }

@@ -96,6 +96,7 @@
             this.bttDelete.TabIndex = 1;
             this.bttDelete.Text = "Delete selected";
             this.bttDelete.UseVisualStyleBackColor = true;
+            this.bttDelete.Click += new System.EventHandler(this.bttDelete_Click);
             // 
             // bttOpenSpritesheet
             // 

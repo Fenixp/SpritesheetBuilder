@@ -133,6 +133,15 @@ namespace SpritesheetBuilderBackend.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save was succesfully executed .
+        /// </summary>
+        public static string SaveSuccesfull {
+            get {
+                return ResourceManager.GetString("SaveSuccesfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         public static string Success {

@@ -120,6 +120,9 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="Prompt" xml:space="preserve">
     <value>Question</value>
   </data>

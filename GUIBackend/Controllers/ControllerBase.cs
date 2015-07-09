@@ -19,6 +19,10 @@ namespace GUIBackend.Controllers
         {
             MessageBox.Show(message, DialogRX.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+        protected void ShowInfo(string message)
+        {
+            MessageBox.Show(message, DialogRX.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         protected bool ShowPrompt(string message)
         {

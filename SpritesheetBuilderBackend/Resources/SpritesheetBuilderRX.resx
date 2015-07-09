@@ -141,6 +141,9 @@
   <data name="Renaming" xml:space="preserve">
     <value>Renaming.</value>
   </data>
+  <data name="SaveSuccesfull" xml:space="preserve">
+    <value>Save was succesfully executed </value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>Success</value>
   </data>
